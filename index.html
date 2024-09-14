@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Física</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- <style>
+        .oculto {
+            display: none;
+        }
+        .imagen-fisica {
+            width: 100%;
+            height: auto;
+            max-width: 400px;
+            margin: 20px 0;
+        }
+    </style> -->
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <header>
+        
+        <h1>Física en Movimiento</h1>
+
+
+        <nav>
+            <div class="row">
+                <ul class="botones">
+                    <li><a href="#inicio" class="active" onclick="mostrarSeccion('inicio')">Inicio</a></li>
+                    <li><a href="#notacion" onclick="mostrarSeccion('notacion')">Notación Científica</a></li>
+                    <li><a href="#movimiento1D" onclick="mostrarSeccion('movimiento1D')">Movimiento en una Dimensión</a></li>
+                </ul>
+            </div>
+            <div class="row">
+                <ul class="botones">
+                    <li><a href="#movimientoUniforme" onclick="mostrarSeccion('movimientoUniforme')">MRU</a></li>
+                    <li><a href="#mua" onclick="mostrarSeccion('mua')">MUA</a></li>
+                    <li><a href="#caidaLibre" onclick="mostrarSeccion('caidaLibre')">Caída Libre</a></li>
+                </ul>
+            </div>
+            <div class="row">
+                <ul class="botones">
+                    <li><a href="#conversion" onclick="mostrarSeccion('conversion')">Conversión de Unidades</a></li>
+                    <li><a href="#comentarios">Comentarios</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Encabezado -->
+    <header>
+        <h1>Proyecto Final de Física</h1>
+        <p>Interacción con temas fundamentales de la física</p>
+    </header>
+
+    <!-- Sección de Inicio -->
+    <section id="inicio">
+        <h2>¿Qué es la Física?</h2>
+        <p>La física es la ciencia que estudia las propiedades y el comportamiento de la energía y la materia. 
+        Se enfoca en los conceptos fundamentales que explican cómo funciona el universo, desde las partículas subatómicas 
+        hasta las galaxias más grandes.</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUFsCSkAPOAg1wZVXsr3d90QcDl97G-5-idQeMUuK82aQKyCqXFnj4T07gQU6JjlXRwls&usqp=CAU" class="imagen-fisica">
+        <p>Algunos de los conceptos clave en física incluyen el movimiento, la energía, la fuerza, el tiempo y el espacio. 
+        Estas ideas forman la base para la comprensión de fenómenos naturales y son fundamentales en muchas aplicaciones 
+        tecnológicas modernas.</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgiv7AbfaZpCYgm4mbV5EbANRkZJIntMSLOCOOCSrMW5mipxDUa8UfyoznXs7RkOLDE5g&usqp=CAU" alt="Imagen de partículas" class="imagen-fisica">
+    </section>
+
+    
+
+    <section id="notacionCientifica" class="seccion">
+        <h2>Notación Científica</h2>
+        <p>Selecciona la operación y luego ingresa los valores en notación científica:</p>
+        
+        <form id="notacionCientifica-form">
+            <label for="operacion">Operación:</label>
+            <select id="operacion">
+                <option value="multiplicacion">Multiplicación</option>
+                <option value="division">División</option>
+                <option value="suma">Suma</option>
+                <option value="resta">Resta</option>
+            </select>
+            
+            <label for="numero1">Número 1 (en formato 6.5e8):</label>
+            <input type="text" id="numero1" placeholder="Ejemplo: 6.5e8" required>
+            
+            <label for="numero2">Número 2 (en formato 3.2e5):</label>
+            <input type="text" id="numero2" placeholder="Ejemplo: 3.2e5" required>
+            
+            <button type="button" onclick="calcularNotacionCientifica()">Calcular</button>
+        </form>
+        <a href="#" onclick="mostrarSeccion('notacionCientifica')">Notación Científica</a>
+
+        <p id="resultadoNotacionCientifica"></p>
+    </section>
+    
+    
+
+    <!-- Sección de Movimiento en una Dimensión -->
+    <section id="movimiento1D">
+        <h2>Movimiento en una Dimensión</h2>
+        <p>Ingresa los datos conocidos y selecciona lo que deseas calcular:</p>
+        
+        <form id="movimiento1D-form">
+            <label for="posicionInicial">Posición inicial (xi) en metros:</label>
+            <input type="number" id="posicionInicial" placeholder="Opcional" step="any">
+            
+            <label for="velocidadInicial">Velocidad inicial (vxi) en m/s:</label>
+            <input type="number" id="velocidadInicial" placeholder="Opcional" step="any">
+            
+            <label for="aceleracion">Aceleración (ax) en m/s²:</label>
+            <input type="number" id="aceleracion" placeholder="Opcional" step="any">
+            
+            <label for="tiempo">Tiempo (t) en segundos:</label>
+            <input type="number" id="tiempo" placeholder="Opcional" step="any">
+            
+            <label for="posicionFinal">Posición final (xf) en metros:</label>
+            <input type="number" id="posicionFinal" placeholder="Opcional" step="any">
+            
+            <label for="velocidadFinal">Velocidad final (vxf) en m/s:</label>
+            <input type="number" id="velocidadFinal" placeholder="Opcional" step="any">
+    
+            <p>Selecciona qué deseas calcular:</p>
+            <label><input type="checkbox" id="calcularPosicionFinal"> Posición final (xf)</label><br>
+            <label><input type="checkbox" id="calcularVelocidadFinal"> Velocidad final (vxf)</label><br>
+            <label><input type="checkbox" id="calcularTiempo"> Tiempo (t)</label><br>
+    
+            <button type="button" onclick="calcularMovimiento1D()">Calcular</button>
+        </form>
+        
+        <p id="resultadoMovimiento1D"></p>
+    </section>
+    
+    
+    
+
+    <section id="movimientoUniforme">
+        <h2>Movimiento Uniforme</h2>
+        <form id="formMovimientoUniforme">
+            <label for="datoDisponibleMU">Selecciona qué dato tienes disponible:</label>
+            <select id="datoDisponibleMU" onchange="mostrarCamposMovimientoUniforme()">
+                <option value="">Selecciona un dato</option>
+                <option value="distancia">Distancia</option>
+                <option value="tiempo">Tiempo</option>
+                <option value="rapidez">Rapidez Promedio</option>
+                <option value="velocidad">Velocidad</option>
+                <option value="area">Área</option>
+            </select>
+    
+            <div id="camposAdicionalesMU">
+                <!-- Los campos adicionales se agregarán aquí mediante JavaScript -->
+            </div>
+    
+            <fieldset>
+                <legend>Selecciona qué deseas calcular:</legend>
+                <label><input type="checkbox" id="calcularRapidez" /> Rapidez Promedio</label>
+                <label><input type="checkbox" id="calcularVelocidad" /> Velocidad</label>
+                <label><input type="checkbox" id="calcularDistancia" /> Distancia</label>
+                <label><input type="checkbox" id="calcularArea" /> Área</label>
+            </fieldset>
+    
+            <button type="button" onclick="calcularMovimientoUniforme()">Calcular</button>
+            <p id="resultadoMovimientoUniforme"></p>
+        </form>
+    </section>
+    
+    
+    
+
+    <!-- Sección de Movimiento Uniformemente Acelerado -->
+    <div id="muaCalculadora">
+        <h2>Calculadora de Movimiento Uniformemente Acelerado (MUA)</h2>
+        
+        <label for="velocidadInicial">Velocidad Inicial (v₀) (m/s):</label>
+        <input type="number" id="velocidadInicial" step="any">
+        
+        <label for="velocidadFinal">Velocidad Final (v) (m/s):</label>
+        <input type="number" id="velocidadFinal" step="any">
+        
+        <label for="aceleracion">Aceleración (a) (m/s²):</label>
+        <input type="number" id="aceleracion" step="any">
+        
+        <label for="tiempo">Tiempo (t) (s):</label>
+        <input type="number" id="tiempo" step="any">
+        
+        <label for="distancia">Distancia (s) (m):</label>
+        <input type="number" id="distancia" step="any">
+        
+        <label for="calcular">¿Qué deseas calcular?</label>
+        <select id="calcular">
+            <option value="velocidadFinal">Velocidad Final</option>
+            <option value="distancia">Distancia</option>
+            <option value="velocidadInicial">Velocidad Inicial</option>
+            <option value="aceleracion">Aceleración</option>
+            <option value="tiempo">Tiempo</option>
+        </select>
+        
+        <button onclick="calcularMUA()">Calcular</button>
+        
+        <div id="resultadoMUA"></div>
+    </div>
+    
+
+    <!-- Sección de Caída Libre -->
+    <section id="caidaLibre" class="oculto">
+        <h2>Caída Libre</h2>
+        <p>La caída libre es un tipo de movimiento uniformemente acelerado donde un objeto cae bajo la influencia de la gravedad sin resistencia del aire.</p>
+        <form id="caidaLibreForm">
+            <label for="altura">Altura (m):</label>
+            <input type="number" id="altura" name="altura">
+            <button type="button" onclick="calcularCaidaLibre()">Calcular Tiempo de Caída</button>
+        </form>
+        <p id="resultadoCaidaLibre"></p>
+    </section>
+
+    <!-- Sección de Conversión de Unidades -->
+    <section id="conversion" class="oculto">
+        <h2>Conversión de Unidades</h2>
+        <p>Las conversiones de unidades permiten transformar una medida de una unidad a otra.</p>
+        <form id="conversionForm">
+            <label for="valor">Valor:</label>
+            <input type="number" id="valor" name="valor">
+            <label for="unidadInicial">Unidad inicial:</label>
+            <select id="unidadInicial" name="unidadInicial">
+                <option value="metros">Metros</option>
+                <option value="kilometros">Kilómetros</option>
+                <option value="millas">Millas</option>
+            </select>
+            <label for="unidadFinal">Unidad final:</label>
+            <select id="unidadFinal" name="unidadFinal">
+                <option value="metros">Metros</option>
+                <option value="kilometros">Kilómetros</option>
+                <option value="millas">Millas</option>
+            </select>
+            <button type="button" onclick="convertirUnidades()">Convertir</button>
+        </form>
+        <p id="resultadoConversion"></p>
+    </section>
+
+    <footer>
+        <p>© 2024 Física en Movimiento</p>
+    </footer>
+
+    <script src="/js/script.js"></script>
+
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 200,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#45a049"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#45a049"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#45a049",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 250,
+                        "size": 0,
+                        "duration": 2,
+                        "opacity": 0.8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 400,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
+
+
+
